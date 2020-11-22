@@ -32,23 +32,17 @@ print(train_images.shape) # 60,000 rows and 784 columns
 print(test_images.shape) # 10,000 rows and 784 columns
 
 # Build the model
-# 3 layers, 2 layers with 64 neurons and the relu function
+# 6 layers, 5 layers with 250 neurons and the relu function
 # 1 layer with 10 neurons and softmax function
 model = Sequential([
-    Dense(64, activation='relu', input_dim=784),
+    Dense(250, activation='relu', input_dim=784),
     Dense(250, activation='sigmoid'),
     Dense(250, activation='sigmoid'),
     Dense(250, activation='sigmoid'),
     Dense(250, activation='sigmoid'),
     Dense(10, activation='softmax')
 ])
-'''
-model.add(Dense(64, activation='relu', input_dim=784))
-model.add(Dense(64, activation='sigmoid'))
-model.add(Dense(64, activation='sigmoid'))
-model.add(Dense(64, activation='sigmoid'))
-model.add(Dense(10, activation='softmax'))
-'''
+
 # Compile the model
 # The loss function measures how well the model did on training and then tries to improve on it using the optimizer
 model.compile(
@@ -61,8 +55,8 @@ model.compile(
 model.fit(
     train_images,
     to_categorical(train_labels), # ex for 2, [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
-    epochs=5, # number of iterations over the entire dataset to train on
-    batch_size=32 #number of samples per gradient update for training
+    epochs=20, # number of iterations over the entire dataset to train on
+    batch_size=30 #number of samples per gradient update for training
 )
 
 # Evaluate the model
